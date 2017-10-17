@@ -1,6 +1,7 @@
 <template>
   <div>
     <router-view></router-view>
+    <LoadingCircle v-if="isLoading"></LoadingCircle>
     <v-btn color="green"
     :right="true"
     :bottom="true"
@@ -14,8 +15,21 @@
 </template>
 
 <script>
+import LoadingCircle from '@/components/customComponents/loadingCircle'
+
 export default {
-  name: 'MsPhdTrackHome'
+  name: 'MsPhdTrackHome',
+  data () {
+    return {
+      isLoading: true
+    }
+  },
+  created () {
+    this.isLoading = false
+  },
+  components: {
+    LoadingCircle
+  }
 }
 </script>
 
