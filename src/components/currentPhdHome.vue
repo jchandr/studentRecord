@@ -6,10 +6,9 @@
 
 <script>
 export default {
-  name: 'Hello',
+  name: 'CurrentPhdHome',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
     }
   }
 }

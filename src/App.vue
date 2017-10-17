@@ -8,9 +8,8 @@
     <v-toolbar-items class="hidden-sm-and-down">
       <v-btn v-for="tool of toolBarItems"
       :key="tool.title"
-      @click="handleButtonClick"
+      @click="handleButtonClick(tool)"
       flat>{{ tool.title }}</v-btn>
-
     </v-toolbar-items>
   </v-toolbar>
   </v-app>
@@ -18,53 +17,63 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        toolBarItems: [
-          {
-            title: 'Current Phd',
-            isSelected: {
-              type: Boolean,
-              default: true
-            }
-          },
-          {
-            title: 'MS (Phd Track)',
-            isSelected: {
-              type: Boolean,
-              default: false
-            }
-          },
-          {
-            title: 'Current Funded MS Only',
-            isSelected: {
-              type: Boolean,
-              default: false
-            }
-          },
-          {
-            title: 'Graduated Phd',
-            isSelected: {
-              type: Boolean,
-              default: false
-            }
-          },
-          {
-            title: 'Graduated MS',
-            isSelected: {
-              type: Boolean,
-              default: false
-            }
+import RouteNames from '@/router/names'
+
+export default {
+  data () {
+    return {
+      toolBarItems: [
+        {
+          title: 'Current Phd',
+          routeName: RouteNames.CurrentPhd.Home,
+          isSelected: {
+            type: Boolean,
+            default: true
           }
-        ]
-      }
-    },
-    methods: {
-      handleButtonClick () {
-      }
+        },
+        {
+          title: 'MS (Phd Track)',
+          routeName: RouteNames.MsPhdTrack.Home,
+          isSelected: {
+            type: Boolean,
+            default: false
+          }
+        },
+        {
+          title: 'Current Funded MS Only',
+          routeName: RouteNames.CurrentFundedMsOnly.Home,
+          isSelected: {
+            type: Boolean,
+            default: false
+          }
+        },
+        {
+          title: 'Graduated Phd',
+          routeName: RouteNames.GraduatedPhd.Home,
+          isSelected: {
+            type: Boolean,
+            default: false
+          }
+        },
+        {
+          title: 'Graduated MS',
+          routeName: RouteNames.GraduatedMs.Home,
+          isSelected: {
+            type: Boolean,
+            default: false
+          }
+        }
+      ]
+    }
+  },
+  methods: {
+    handleButtonClick (tool) {
+      this.$router.push({
+        name: tool.routeName
+      })
     }
   }
+}
 
 </script>
 
