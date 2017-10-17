@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import RouteNames from '@/router/names'
-import CurrentPhdHome from '@/components/CurrentPhdHome'
-import MsPhdTrackHome from '@/components/MsPhdTrackHome'
-import CurrentFundedMsOnlyHome from '@/components/CurrentFundedMsOnlyHome'
-import GraduatedPhdHome from '@/components/GraduatedPhdHome'
-import GraduatedMsHome from '@/components/GraduatedMsHome'
+import CurrentPhdHome from '@/components/currentPhd/currentPhdHome'
+import MsPhdTrackHome from '@/components/msPhdTrack/msPhdTrackHome'
+import CurrentFundedMsOnlyHome from
+  '@/components/currentFundedMsOnly/currentFundedMsOnlyHome'
+import GraduatedPhdHome from '@/components/graduatedPhd/graduatedPhdHome'
+import GraduatedMsHome from '@/components/graduatedMs/graduatedMsHome'
 
 Vue.use(Router)
 
@@ -15,19 +16,19 @@ export default new Router({
     name: RouteNames.CurrentPhd.Home,
     component: CurrentPhdHome
   }, {
-    path: '/MsPhdTrack',
+    path: '/msPhdTrack',
     name: RouteNames.MsPhdTrack.Home,
     component: MsPhdTrackHome
   }, {
-    path: '/CurrentFundedMsOnly',
+    path: '/currentFundedMsOnly',
     name: RouteNames.CurrentFundedMsOnly.Home,
     component: CurrentFundedMsOnlyHome
   }, {
-    path: '/GraduatedPhd',
+    path: '/graduatedPhd',
     name: RouteNames.GraduatedPhd.Home,
     component: GraduatedPhdHome
   }, {
-    path: '/GraduatedMs',
+    path: '/graduatedMs',
     name: RouteNames.GraduatedMs.Home,
     component: GraduatedMsHome
   }]
