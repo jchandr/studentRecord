@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-toolbar>
-      <v-toolbar-title>Binghamton University Watson School MS/PhD Student Record</v-toolbar-title>
+      <v-toolbar-title>Student Records</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-side-icon class="hidden-md-and-up">
       </v-toolbar-side-icon>
@@ -10,6 +10,7 @@
         :key="tool.title"
         @click="handleButtonClick(tool)"
         flat>{{ tool.title }}</v-btn>
+        <v-btn color="green">Logout</v-btn>
       </v-toolbar-items>
     </v-toolbar>
     <router-view></router-view>
