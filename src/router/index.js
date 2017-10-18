@@ -7,12 +7,22 @@ import CurrentFundedMsOnlyHome from
   '@/components/currentFundedMsOnly/currentFundedMsOnlyHome'
 import GraduatedPhdHome from '@/components/graduatedPhd/graduatedPhdHome'
 import GraduatedMsHome from '@/components/graduatedMs/graduatedMsHome'
+import LoginPage from '@/components/login'
+import Home from '@/components/home'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [{
     path: '/',
+    name: RouteNames.LoginPage,
+    component: LoginPage
+  }, {
+    path: '/home',
+    name: RouteNames.Home,
+    component: Home
+  }, {
+    path: '/currentPhdHome',
     name: RouteNames.CurrentPhd.Home,
     component: CurrentPhdHome
   }, {

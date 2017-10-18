@@ -1,4 +1,5 @@
 export default {
+  Home: 'Home',
   CurrentPhd: {
     Home: 'CurrentPhdHome'
   },
