@@ -6,20 +6,20 @@
     lazy-validation>
       <v-text-field
         label="E-mail"
-        v-model="email"
+        v-model="credentials.email"
         :rules="emailRules"
         required></v-text-field>
         <v-flex>
-              <v-text-field
-                name="input-10-1"
-                label="Enter your password"
-                hint="At least 8 characters"
-                v-model="password"
-                min="8"
-                :append-icon="e1 ? 'visibility_off' : 'visibility'"
-                :append-icon-cb="() => (e1 = !e1)"
-                :type="e1 ? 'text' : 'password'"
-                counter></v-text-field>
+          <v-text-field
+            name="input-10-1"
+            label="Enter your password"
+            hint="At least 8 characters"
+            v-model="credentials.password"
+            min="8"
+            :append-icon="e1 ? 'visibility_off' : 'visibility'"
+            :append-icon-cb="() => (e1 = !e1)"
+            :type="e1 ? 'text' : 'password'"
+            counter></v-text-field>
         </v-flex>
       <v-btn @click="submit"
       :disabled="!valid">submit</v-btn>
@@ -35,9 +35,11 @@ export default {
   name: 'LoginPage',
   data () {
     return {
-      email: undefined,
       e1: false,
-      password: undefined
+      credentials: {
+        email: undefined,
+        password: undefined
+      }
     }
   },
   methods: {
