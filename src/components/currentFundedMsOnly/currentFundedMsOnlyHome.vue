@@ -30,11 +30,6 @@ export default {
   },
   components: {
     LoadingCircle
-  },
-  route: {
-    canActivate () {
-      return auth.user.authenticated
-    }
   }
 }
 </script>

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import RouteNames from '@/router/names'
 import CurrentPhdHome from '@/components/currentPhd/currentPhdHome'
+import CurrentPhdCreate from '@/components/currentPhd/create'
 import MsPhdTrackHome from '@/components/msPhdTrack/msPhdTrackHome'
 import CurrentFundedMsOnlyHome from
   '@/components/currentFundedMsOnly/currentFundedMsOnlyHome'
@@ -9,10 +10,12 @@ import GraduatedPhdHome from '@/components/graduatedPhd/graduatedPhdHome'
 import GraduatedMsHome from '@/components/graduatedMs/graduatedMsHome'
 import LoginPage from '@/components/login'
 import Home from '@/components/home'
+import auth from '@/auth'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [{
     path: '/',
     name: RouteNames.LoginPage,
@@ -22,9 +25,14 @@ export default new Router({
     name: RouteNames.Home,
     component: Home,
     children: [{
-      path: '/currentPhdHome',
+      path: '/currentPhd',
       name: RouteNames.CurrentPhd.Home,
-      component: CurrentPhdHome
+      component: CurrentPhdHome,
+      children: [{
+        path: '/currentPhd/create',
+        name: RouteNames.CurrentPhd.Create,
+        component: CurrentPhdCreate
+      }]
     }, {
       path: '/msPhdTrack',
       name: RouteNames.MsPhdTrack.Home,
@@ -43,4 +51,10 @@ export default new Router({
       component: GraduatedMsHome
     }]
   }]
+}).beforeEach((to, from, next) => {
+  if (auth.checkAuth === true) {
+    next()
+  } else {
+    next(false)
+  }
 })

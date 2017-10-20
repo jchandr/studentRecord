@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-toolbar>
+    <v-toolbar :fixed="true">
       <v-toolbar-title>Student Records</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-side-icon class="hidden-md-and-up">
@@ -14,7 +14,6 @@
         @click="handleLogout()">Logout</v-btn>
       </v-toolbar-items>
     </v-toolbar>
-    <h3>Welcome {{ currentUser }} !</h3>
     <router-view></router-view>
   </v-app>
 </template>
@@ -72,9 +71,6 @@ export default {
       ]
     }
   },
-  created () {
-    this.currentUser = auth.getUserInfo(this)
-  },
   methods: {
     handleButtonClick (tool) {
       this.$router.push({
@@ -83,11 +79,6 @@ export default {
     },
     handleLogout () {
       auth.logout(this)
-    }
-  },
-  route: {
-    canActivate () {
-      return auth.user.authenticated
     }
   }
 }

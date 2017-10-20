@@ -2,7 +2,8 @@ export default {
   Home: 'Home',
   LoginPage: 'LoginPage',
   CurrentPhd: {
-    Home: 'CurrentPhdHome'
+    Home: 'CurrentPhdHome',
+    Create: 'CurrentPhdCreate'
   },
   MsPhdTrack: {
     Home: 'MsPhdTrackHome'

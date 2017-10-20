@@ -7,6 +7,7 @@
     :bottom="true"
     :fixed="true"
     :large="true"
+    @click="handleAdd"
     fab
     dark>
       <v-icon dark>add</v-icon>
@@ -36,13 +37,15 @@ export default {
   created () {
     this.isLoading = false
   },
+  methods: {
+    handleAdd () {
+      this.$router.push({
+        name: RouteNames.CurrentPhd.Create
+      })
+    }
+  },
   components: {
     LoadingCircle
-  },
-  route: {
-    canActivate () {
-      return auth.user.authenticated
-    }
   }
 }
 </script>
