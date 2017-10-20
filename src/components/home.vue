@@ -10,7 +10,8 @@
         :key="tool.title"
         @click="handleButtonClick(tool)"
         flat>{{ tool.title }}</v-btn>
-        <v-btn color="green">Logout</v-btn>
+        <v-btn color="green"
+        @click="handleLogout">Logout</v-btn>
       </v-toolbar-items>
     </v-toolbar>
     <router-view></router-view>
@@ -74,6 +75,9 @@ export default {
       this.$router.push({
         name: tool.routeName
       })
+    },
+    handleLogout () {
+      auth.logout(this)
     }
   },
   route: {

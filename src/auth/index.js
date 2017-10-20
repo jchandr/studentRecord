@@ -44,10 +44,13 @@ export default {
   },
 
   // To log out, we just need to remove the token
-  logout () {
+  logout (context) {
     localStorage.removeItem('id_token')
     localStorage.removeItem('access_token')
     this.user.authenticated = false
+    context.$router.push({
+      name: RouteNames.LoginPage
+    })
   },
 
   checkAuth () {

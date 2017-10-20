@@ -65,6 +65,11 @@ export default {
       }
       auth.login(this, credentials)
     }
+  },
+  route: {
+    canActivate () {
+      return auth.user.authenticated
+    }
   }
 }
 </script>
