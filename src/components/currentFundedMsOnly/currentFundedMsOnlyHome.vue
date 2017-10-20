@@ -16,6 +16,7 @@
 
 <script>
 import LoadingCircle from '@/components/customComponents/loadingCircle'
+import auth from '@/auth'
 
 export default {
   name: 'CurrentFundedMsOnlyHome',
@@ -29,6 +30,11 @@ export default {
   },
   components: {
     LoadingCircle
+  },
+  route: {
+    canActivate () {
+      return auth.user.authenticated
+    }
   }
 }
 </script>

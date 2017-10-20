@@ -19,6 +19,7 @@
 
 <script>
 import RouteNames from '@/router/names'
+import auth from '../auth'
 
 export default {
   name: 'Home',
@@ -73,6 +74,11 @@ export default {
       this.$router.push({
         name: tool.routeName
       })
+    }
+  },
+  route: {
+    canActivate () {
+      return auth.user.authenticated
     }
   }
 }

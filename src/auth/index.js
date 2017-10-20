@@ -1,3 +1,4 @@
+import RouteNames from '../router/names'
 import router from '../router/index'
 
 // URL and endpoint constants
@@ -13,24 +14,21 @@ export default {
   },
 
   // Send a request to the login URL and save the returned JWT
-  login(context, creds, redirect) {
+  login (context, creds) {
     context.$http.post(LOGIN_URL, creds, (data) => {
       localStorage.setItem('id_token', data.id_token)
       localStorage.setItem('access_token', data.access_token)
 
       this.user.authenticated = true
-
-      // Redirect to a specified route
-      if (redirect) {
-        router.go(redirect)
-      }
-
-    }).error((err) => {
-      context.error = err
+        // Redirect to a specified route
+    }).then((data) => {
+      context.$router.push({
+        name: RouteNames.CurrentPhd.Home
+      })
     })
   },
 
-  signup(context, creds, redirect) {
+  signup (context, creds, redirect) {
     context.$http.post(SIGNUP_URL, creds, (data) => {
       localStorage.setItem('id_token', data.id_token)
       localStorage.setItem('access_token', data.access_token)
@@ -40,20 +38,19 @@ export default {
       if (redirect) {
         router.go(redirect)
       }
-
     }).error((err) => {
       context.error = err
     })
   },
 
   // To log out, we just need to remove the token
-  logout() {
+  logout () {
     localStorage.removeItem('id_token')
     localStorage.removeItem('access_token')
     this.user.authenticated = false
   },
 
-  checkAuth() {
+  checkAuth () {
     var jwt = localStorage.getItem('id_token')
     if (jwt) {
       this.user.authenticated = true
@@ -63,7 +60,7 @@ export default {
   },
 
   // The object to be passed as a header for authenticated requests
-  getAuthHeader() {
+  getAuthHeader () {
     return {
       'Authorization': 'Bearer ' + localStorage.getItem('access_token')
     }

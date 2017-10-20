@@ -20,26 +20,27 @@ export default new Router({
   }, {
     path: '/home',
     name: RouteNames.Home,
-    component: Home
-  }, {
-    path: '/currentPhdHome',
-    name: RouteNames.CurrentPhd.Home,
-    component: CurrentPhdHome
-  }, {
-    path: '/msPhdTrack',
-    name: RouteNames.MsPhdTrack.Home,
-    component: MsPhdTrackHome
-  }, {
-    path: '/currentFundedMsOnly',
-    name: RouteNames.CurrentFundedMsOnly.Home,
-    component: CurrentFundedMsOnlyHome
-  }, {
-    path: '/graduatedPhd',
-    name: RouteNames.GraduatedPhd.Home,
-    component: GraduatedPhdHome
-  }, {
-    path: '/graduatedMs',
-    name: RouteNames.GraduatedMs.Home,
-    component: GraduatedMsHome
+    component: Home,
+    children: [{
+      path: '/currentPhdHome',
+      name: RouteNames.CurrentPhd.Home,
+      component: CurrentPhdHome
+    }, {
+      path: '/msPhdTrack',
+      name: RouteNames.MsPhdTrack.Home,
+      component: MsPhdTrackHome
+    }, {
+      path: '/currentFundedMsOnly',
+      name: RouteNames.CurrentFundedMsOnly.Home,
+      component: CurrentFundedMsOnlyHome
+    }, {
+      path: '/graduatedPhd',
+      name: RouteNames.GraduatedPhd.Home,
+      component: GraduatedPhdHome
+    }, {
+      path: '/graduatedMs',
+      name: RouteNames.GraduatedMs.Home,
+      component: GraduatedMsHome
+    }]
   }]
 })
