@@ -1,5 +1,6 @@
 export default {
   Home: 'Home',
+  LoginPage: 'LoginPage',
   CurrentPhd: {
     Home: 'CurrentPhdHome'
   },

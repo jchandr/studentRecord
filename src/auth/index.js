@@ -53,6 +53,15 @@ export default {
     })
   },
 
+  getUserInfo (context) {
+    var user
+    context.$http.post('/currentUser').then((data) => {
+      console.log(data)
+      user = data
+    })
+    return user
+  },
+
   checkAuth () {
     var jwt = localStorage.getItem('id_token')
     if (jwt) {
@@ -60,6 +69,7 @@ export default {
     } else {
       this.user.authenticated = false
     }
+    return this.user.authenticated
   },
 
   // The object to be passed as a header for authenticated requests

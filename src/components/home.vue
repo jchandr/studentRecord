@@ -11,9 +11,10 @@
         @click="handleButtonClick(tool)"
         flat>{{ tool.title }}</v-btn>
         <v-btn color="green"
-        @click="handleLogout">Logout</v-btn>
+        @click="handleLogout()">Logout</v-btn>
       </v-toolbar-items>
     </v-toolbar>
+    <h3>Welcome {{ currentUser }} !</h3>
     <router-view></router-view>
   </v-app>
 </template>
@@ -26,6 +27,7 @@ export default {
   name: 'Home',
   data () {
     return {
+      currentUser: undefined,
       toolBarItems: [
         {
           title: 'Current Phd',
@@ -69,6 +71,9 @@ export default {
         }
       ]
     }
+  },
+  created () {
+    this.currentUser = auth.getUserInfo(this)
   },
   methods: {
     handleButtonClick (tool) {

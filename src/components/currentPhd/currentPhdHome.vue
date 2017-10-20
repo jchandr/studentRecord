@@ -17,12 +17,20 @@
 <script>
 import LoadingCircle from '@/components/customComponents/loadingCircle'
 import auth from '@/auth'
+import RouteNames from '@/router/names'
 
 export default {
   name: 'CurrentPhdHome',
   data () {
     return {
       isLoading: true
+    }
+  },
+  beforeCreate () {
+    if (!auth.checkAuth) {
+      this.$router.push({
+        name: RouteNames.LoginPage
+      })
     }
   },
   created () {
