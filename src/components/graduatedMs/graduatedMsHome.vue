@@ -16,7 +16,6 @@
 
 <script>
 import LoadingCircle from '@/components/customComponents/loadingCircle'
-import auth from '@/auth'
 
 export default {
   name: 'GraduatedMsHome',

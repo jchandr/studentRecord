@@ -2,6 +2,7 @@
   <div>
     <router-view></router-view>
     <LoadingCircle v-if="isLoading"></LoadingCircle>
+    <List :items="items"></List>
     <v-btn color="green"
     :right="true"
     :bottom="true"
@@ -17,35 +18,38 @@
 
 <script>
 import LoadingCircle from '@/components/customComponents/loadingCircle'
-import auth from '@/auth'
 import RouteNames from '@/router/names'
+import List from './partials/list'
+import Records from '@/db'
 
 export default {
   name: 'CurrentPhdHome',
   data () {
     return {
-      isLoading: true
-    }
-  },
-  beforeCreate () {
-    if (!auth.checkAuth) {
-      this.$router.push({
-        name: RouteNames.LoginPage
-      })
+      isLoading: false,
+      items: undefined
     }
   },
   created () {
-    this.isLoading = false
+    this.isLoading = true
+    this.getStudentRecords()
   },
   methods: {
     handleAdd () {
       this.$router.push({
         name: RouteNames.CurrentPhd.Create
       })
+    },
+    getStudentRecords () {
+      Records.getStudentRecords(this).then(({body}) => {
+        this.items = body.res
+        this.isLoading = false
+      })
     }
   },
   components: {
-    LoadingCircle
+    LoadingCircle,
+    List
   }
 }
 </script>

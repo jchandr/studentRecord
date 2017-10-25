@@ -10,7 +10,6 @@ import GraduatedPhdHome from '@/components/graduatedPhd/graduatedPhdHome'
 import GraduatedMsHome from '@/components/graduatedMs/graduatedMsHome'
 import LoginPage from '@/components/login'
 import Home from '@/components/home'
-import auth from '@/auth'
 
 Vue.use(Router)
 
@@ -51,10 +50,4 @@ export default new Router({
       component: GraduatedMsHome
     }]
   }]
-}).beforeEach((to, from, next) => {
-  if (auth.checkAuth === true) {
-    next()
-  } else {
-    next(false)
-  }
 })
