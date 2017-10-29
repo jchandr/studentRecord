@@ -19,7 +19,7 @@
 <script>
 import LoadingCircle from '@/components/customComponents/loadingCircle'
 import RouteNames from '@/router/names'
-import List from './partials/list'
+import List from '@/components/common/partials/list'
 import Records from '@/db'
 
 export default {
@@ -41,7 +41,7 @@ export default {
       })
     },
     getStudentRecords () {
-      Records.getStudentRecords(this).then(({body}) => {
+      Records.getPhDStudentRecords(this).then(({body}) => {
         this.items = body.res
         this.isLoading = false
       })
