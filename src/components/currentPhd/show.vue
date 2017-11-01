@@ -11,9 +11,6 @@ import Records from '@/db/index'
 
 export default {
   name: 'CurrentPhdShow',
-  created () {
-    this.getStudentInfo()
-  },
   methods: {
     getStudentInfo () {
       Records.getStudentInfo(this, parseInt(this.$route.params.id)).then(({body}) => {
