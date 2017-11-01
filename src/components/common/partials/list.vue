@@ -3,7 +3,8 @@
     <router-view></router-view>
       <ListItem v-for="item in items"
       :key="item.title"
-      :item="item">
+      :item="item"
+      @click="handleItemClick(item)">
       </ListItem>
   </div>
 </template>
@@ -15,6 +16,11 @@ export default {
   props: {
     items: {
       type: Array
+    }
+  },
+  methods: {
+    handleItemClick (item) {
+      this.$emit('itemClick', item)
     }
   },
   components: {

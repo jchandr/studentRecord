@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import RouteNames from '@/router/names'
 import CurrentPhdHome from '@/components/currentPhd/currentPhdHome'
 import CurrentPhdCreate from '@/components/currentPhd/create'
+import CurrentPhdShow from '@/components/currentPhd/show'
 import MsPhdTrackHome from '@/components/msPhdTrack/msPhdTrackHome'
 import CurrentFundedMsOnlyHome from
   '@/components/currentFundedMsOnly/currentFundedMsOnlyHome'
@@ -31,6 +32,10 @@ export default new Router({
         path: '/currentPhd/create',
         name: RouteNames.CurrentPhd.Create,
         component: CurrentPhdCreate
+      }, {
+        path: '/currentPhd/:id',
+        name: RouteNames.CurrentPhd.Show,
+        component: CurrentPhdShow
       }]
     }, {
       path: '/msPhdTrack',

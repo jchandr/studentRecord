@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <h5>Create Current Phd Student</h5>
     <v-dialog v-model="dialog"
     fullscreen
     transition="dialog-bottom-transition"
@@ -11,7 +10,7 @@
         <v-btn icon @click.native="handleCancel" dark>
           <v-icon>close</v-icon>
         </v-btn>
-        <v-toolbar-title>Create Current Phd Student</v-toolbar-title>
+        <v-toolbar-title>{{ formTitle }}</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items>
           <v-btn dark flat @click.native="handleSave">Save</v-btn>
@@ -42,6 +41,20 @@ export default {
   data () {
     return {
       dialog: true
+    }
+  },
+  props: {
+    isCreate: {
+      type: Boolean,
+      default: true
+    }
+  },
+  computed: {
+    formTitle () {
+      if (this.isCreate === true) {
+        return 'Create Current Phd Student'
+      }
+      return 'Edit Student'
     }
   },
   methods: {
