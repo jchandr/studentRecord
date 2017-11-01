@@ -2,7 +2,8 @@
   <div>
     <router-view></router-view>
     <LoadingCircle v-if="isLoading"></LoadingCircle>
-    <List :items="items"></List>
+    <List :items="items"
+    @itemClick="handleItemClick"></List>
     <v-btn color="green"
     :right="true"
     :bottom="true"
@@ -44,6 +45,14 @@ export default {
       Records.getPhDStudentRecords(this).then(({body}) => {
         this.items = body.res
         this.isLoading = false
+      })
+    },
+    handleItemClick ({Idx}) {
+      this.$router.push({
+        name: RouteNames.CurrentPhd.Show,
+        params: {
+          id: parseInt(Idx)
+        }
       })
     }
   },
