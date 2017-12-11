@@ -20,7 +20,6 @@
 
 <script>
 import RouteNames from '@/router/names'
-import auth from '../auth'
 
 export default {
   name: 'Home',
@@ -78,7 +77,6 @@ export default {
       })
     },
     handleLogout () {
-      auth.logout(this)
     }
   }
 }

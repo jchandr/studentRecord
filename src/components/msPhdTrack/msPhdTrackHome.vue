@@ -41,8 +41,8 @@ export default {
       })
     },
     getStudentRecords () {
-      Records.getMSStudentRecords(this).then(({body}) => {
-        this.items = body.res
+      Records.getMSStudentRecords(this).then(({response}) => {
+        this.items = response
         this.isLoading = false
       })
     }

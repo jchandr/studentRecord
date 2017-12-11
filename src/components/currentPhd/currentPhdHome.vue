@@ -42,8 +42,8 @@ export default {
       })
     },
     getStudentRecords () {
-      Records.getPhDStudentRecords(this).then(({body}) => {
-        this.items = body.res
+      Records.getPhDStudentRecords(this).then(({response}) => {
+        this.items = response
         this.isLoading = false
       })
     },
