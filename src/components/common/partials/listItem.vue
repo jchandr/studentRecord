@@ -1,6 +1,5 @@
 <template>
   <div>
-    <router-view></router-view>
     <v-list-tile avatar @click="handleClick">
       <v-list-tile-content>
         <v-list-tile-title v-text="name"></v-list-tile-title>
@@ -14,7 +13,7 @@
 
 <script>
 export default {
-  name: 'app',
+  name: 'ListItem',
   props: {
     item: {
       type: Object

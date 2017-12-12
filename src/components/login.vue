@@ -31,7 +31,6 @@
 </template>
 
 <script>
-import auth from '../auth'
 
 export default {
   name: 'LoginPage',
@@ -59,11 +58,10 @@ export default {
   },
   methods: {
     handleLogin () {
-      var credentials = {
-        username: this.credentials.email,
-        password: this.credentials.password
-      }
-      auth.login(this, credentials)
+      // var credentials = {
+      //   username: this.credentials.email,
+      //   password: this.credentials.password
+      // }
     }
   }
 }
