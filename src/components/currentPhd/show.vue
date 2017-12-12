@@ -1,6 +1,5 @@
 <template>
   <div>
-    <router-view></router-view>
     <CurrentPhdForm :isCreate="false"></CurrentPhdForm>
   </div>
 </template>

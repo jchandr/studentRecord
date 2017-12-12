@@ -1,6 +1,5 @@
 <template>
   <div class="list">
-    <router-view></router-view>
       <ListItem v-for="item in items"
       :key="item.title"
       :item="item"

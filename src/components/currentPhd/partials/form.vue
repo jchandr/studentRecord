@@ -1,7 +1,6 @@
 <template>
   <v-dialog v-model="dialog"
   fullscreen
-  transition="dialog-bottom-transition"
   :overlay="false"
   scrollable>
   <v-card>
@@ -27,7 +26,6 @@
         <v-text-field label="Current Category"></v-text-field>
       </v-form>
     </v-card-text>
-      <div style="flex: 1 1 auto;"></div>
   </v-card>
   </v-dialog>
 </template>

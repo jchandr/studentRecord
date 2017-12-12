@@ -1,6 +1,5 @@
 <template>
   <div>
-    <router-view></router-view>
     <LoadingCircle v-if="isLoading"></LoadingCircle>
     <List :items="items"
     @itemClick="handleItemClick"></List>
@@ -14,6 +13,7 @@
     dark>
       <v-icon dark>add</v-icon>
     </v-btn>
+    <router-view></router-view>
   </div>
 </template>
 
