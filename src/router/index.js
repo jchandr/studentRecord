@@ -35,7 +35,8 @@ export default new Router({
       }, {
         path: '/currentPhd/:id',
         name: RouteNames.CurrentPhd.Show,
-        component: CurrentPhdShow
+        component: CurrentPhdShow,
+        props: true
       }]
     }, {
       path: '/msPhdTrack',

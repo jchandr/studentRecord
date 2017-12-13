@@ -1,5 +1,6 @@
 <template>
   <div>
+    <v-layout row wrap>
     <v-toolbar :fixed="true">
       <v-toolbar-title>Student Records</v-toolbar-title>
       <v-spacer></v-spacer>
@@ -9,13 +10,14 @@
         <v-btn v-for="tool of toolBarItems"
                :key="tool.title"
                @click="handleButtonClick(tool)"
-               flat>{{ tool.title }}
-        </v-btn>
+               flat>{{ tool.title }}</v-btn>
         <v-btn color="green"
                @click="handleLogout()">Logout
         </v-btn>
       </v-toolbar-items>
     </v-toolbar>
+    </v-layout>
+
     <router-view></router-view>
   </div>
 </template>
