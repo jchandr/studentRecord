@@ -1,8 +1,7 @@
 <template>
   <v-dialog v-model="dialog"
             fullscreen
-            :overlay="false"
-            scrollable>
+            :overlay="false">
     <v-card>
       <v-toolbar dark class="primary" color="green">
         <v-btn icon @click.native="handleCancel" dark>
@@ -48,41 +47,58 @@
                     <v-card-text
                       v-text="lorem.slice(0, 1)">
                     </v-card-text>
+                    <v-btn small fab dark>
+                      <v-icon dark>add</v-icon>
+                    </v-btn>
                   </v-card>
                 </v-flex>
                 <v-flex d-flex>
                   <v-layout row wrap>
                     <v-flex d-flex
-                            v-for="n in 2"
-                            :key="n"
-                            xs12
-                    >
+                            xs12>
                       <v-card
                         color="red lighten-2"
-                        dark
-                      >
+                        dark>
+                        <v-card-title primary class="title">Dissertation Committee</v-card-title>
                         <v-card-text
                           v-text="lorem.slice(0, 40)">
                         </v-card-text>
+                        <v-btn class="right" small fab dark>
+                          <v-icon dark>add</v-icon>
+                        </v-btn>
                       </v-card>
                     </v-flex>
                   </v-layout>
                 </v-flex>
               </v-layout>
             </v-flex>
-            <v-flex d-flex xs12 sm6 md2 child-flex>
-              <v-card color="green lighten-2" dark>
-                <v-card-text
-                  v-text="lorem.slice(0, 90)">
-                </v-card-text>
-              </v-card>
-            </v-flex>
-            <v-flex d-flex xs12 sm6 md3>
-              <v-card color="blue lighten-2" dark>
-                <v-card-text
-                  v-text="lorem.slice(0, 100)">
-                </v-card-text>
-              </v-card>
+            <v-flex d-flex xs14 sm8 md5>
+              <v-layout row wrap>
+                <v-flex d-flex>
+                  <v-card color="blue lighten-2" dark>
+                    <v-card-title primary class="title">Comprehensive Exam</v-card-title>
+                    <v-card-text
+                      v-text="lorem.slice(0, 100)">
+                    </v-card-text>
+                  </v-card>
+                </v-flex>
+                <v-flex d-flex>
+                  <v-card color="blue lighten-2" dark>
+                    <v-card-title primary class="title">Progress</v-card-title>
+                    <v-card-text
+                      v-text="lorem.slice(0, 100)">
+                    </v-card-text>
+                  </v-card>
+                </v-flex>
+                <v-flex d-flex>
+                  <v-card color="blue lighten-2" dark>
+                    <v-card-title primary class="title">RPE and Prospectus</v-card-title>
+                    <v-card-text
+                      v-text="lorem.slice(0, 100)">
+                    </v-card-text>
+                  </v-card>
+                </v-flex>
+              </v-layout>
             </v-flex>
           </v-layout>
         </v-container>

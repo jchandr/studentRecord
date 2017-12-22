@@ -17,13 +17,12 @@
       </v-toolbar-items>
     </v-toolbar>
     </v-layout>
-
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-  import RouteNames from '@/router/names'
+  import RouteNames from '../router/names'
   import CurrentPhdHome from './currentPhd/currentPhdHome'
 
   export default {

@@ -6,7 +6,7 @@
 
 <script>
   import CurrentPhdForm from './partials/form'
-  import Records from '@/db/index'
+  import Records from '../../db/index'
 
   export default {
     name: 'CurrentPhdShow',
