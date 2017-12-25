@@ -19,8 +19,8 @@ export default {
       return body
     })
   },
-  getStudentFudingInfo (context, id) {
-    const endpoint = API_URL + 'students/' + id + 'funding'
+  getStudentFundingInfo (context, id) {
+    const endpoint = API_URL + 'students/' + id + '/funding'
     return context.$http.get(endpoint).then(({body}) => {
       return body
     })
