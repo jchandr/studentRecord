@@ -4,9 +4,13 @@
       <v-list-tile-content>
         <v-list-tile-title v-text="name"></v-list-tile-title>
       </v-list-tile-content>
-      <v-list-tile-avatar class="red">
-        <span class="white--text headline">{{ avatarText }}</span>
-      </v-list-tile-avatar>
+      <v-avatar
+        :tile="false"
+        class="green">
+        <v-flex align-center>
+          <b>{{ avatarText }}</b>
+        </v-flex>
+      </v-avatar>
     </v-list-tile>
   </div>
 </template>
@@ -21,10 +25,10 @@ export default {
   },
   computed: {
     name () {
-      return this.item.First_Name + ' ' + this.item.Last_Name
+      return this.item.firstName + ' ' + this.item.lastName
     },
     avatarText () {
-      return this.item.First_Name[0] + this.item.Last_Name[0]
+      return this.item.firstName[0] + this.item.lastName[0]
     }
   },
   methods: {

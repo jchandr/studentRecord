@@ -47,11 +47,11 @@ export default {
         this.isLoading = false
       })
     },
-    handleItemClick ({Idx}) {
+    handleItemClick ({idx}) {
       this.$router.push({
         name: RouteNames.CurrentPhd.Show,
         params: {
-          id: parseInt(Idx)
+          id: ~~idx
         }
       })
     }
