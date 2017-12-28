@@ -33,7 +33,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" flat @click.native="$emit('close')">Close</v-btn>
-          <v-btn color="blue darken-1" flat @click.native="$emit('save')">Save</v-btn>
+          <v-btn color="blue darken-1" flat @click.native="$emit('save', newFunding)">Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

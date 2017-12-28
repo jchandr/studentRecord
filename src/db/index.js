@@ -24,5 +24,11 @@ export default {
     return context.$http.get(endpoint).then(({body}) => {
       return body
     })
+  },
+  createStudentFundingInfo (context, id, data) {
+    const endpoint = API_URL + 'students/' + id + '/funding'
+    return context.$http.post(endpoint, data).then(({body}) => {
+      return body
+    })
   }
 }
