@@ -1,20 +1,18 @@
 <template>
   <div>
-    <CurrentPhdForm :isCreate="false" :student="student"></CurrentPhdForm>
+    <StudentRecordForm :isCreate="false" :student="student" @close="handleClose"></StudentRecordForm>
   </div>
 </template>
 
 <script>
-  import CurrentPhdForm from './partials/form'
+  import StudentRecordForm from '../common/partials/studentRecordForm'
   import Records from '../../db/index'
+  import RouteNames from '../../router/names'
 
   export default {
     name: 'CurrentPhdShow',
     props: {
-      id: {
-        type: Number,
-        default: 0
-      }
+      id: undefined
     },
     data () {
       return {
@@ -26,13 +24,18 @@
         Records.getStudentInfo(this, ~~this.id).then(({response}) => {
           this.student = Object.assign({}, response[0])
         })
-        Records.getStudentFudingInfo(this, ~~this.id).then(({response}) => {
+        Records.getStudentFundingInfo(this, ~~this.id).then(({response}) => {
           this.student.funding = Object.assign({}, response)
+        })
+      },
+      handleClose () {
+        this.$router.push({
+          name: RouteNames.CurrentPhd.Home
         })
       }
     },
     components: {
-      CurrentPhdForm
+      StudentRecordForm
     },
     created () {
       this.getStudentInfo()
