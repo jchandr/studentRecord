@@ -30,5 +30,11 @@ export default {
     return context.$http.post(endpoint, data).then(({body}) => {
       return body
     })
-  }
+  },
+  getDissertationCommittee (context) {
+    const endpoint = API_URL + 'students/dissertation'
+    return context.$http.get(endpoint).then(({body}) => {
+      return body
+    })
+  },
 }
