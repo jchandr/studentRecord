@@ -22,25 +22,24 @@
                 <v-card-text>
                   <v-form>
                     <v-text-field label="Username"
-                                  v-model="student.username"></v-text-field>
+                                  v-model="student.username"/>
                     <v-text-field label="B-Number"
-                                  v-model="student.studentBNumber"></v-text-field>
+                                  v-model="student.studentBNumber"/>
                     <v-text-field label="First Name"
-                                  v-model="student.firstName"></v-text-field>
+                                  v-model="student.firstName"/>
                     <v-text-field label="Last Name"
-                                  v-model="student.lastName"></v-text-field>
+                                  v-model="student.lastName"/>
                     <v-text-field label="EMail"
-                                  v-model="student.email"></v-text-field>
-                    <v-text-field label="Contact Advisor"
-                                  v-model="student.contactAdviser"></v-text-field>
+                                  v-model="student.email"/>
                     <v-text-field label="Current Category"
-                                  v-model="student.authorizeFlag"></v-text-field>
+                                  v-model="student.authorizeFlag"/>
+                    <FacultySelector selectorLabel="Contact Advisor" v-model="student.contactAdviser"/>
                   </v-form>
                 </v-card-text>
               </v-card>
             </v-flex>
             <v-flex d-flex xs12 sm6 md8>
-              <StudentRecordTabs></StudentRecordTabs>
+              <StudentRecordTabs/>
             </v-flex>
           </v-layout>
         </v-container>
@@ -51,13 +50,14 @@
 
 <script>
   import StudentRecordTabs from './studentRecordTabs'
+  import RouteNames from '../../../router/names'
+  import FacultySelector from '../selectors/facultySelector'
 
   export default {
     name: 'StudentRecordForm',
     data () {
       return {
-        dialog: true,
-        lorem: `Lorem ipsum dolor sit amet, mel at clita quando. Te sit oratio vituperatoribus, nam ad ipsum posidonium mediocritatem, explicari dissentiunt cu mea. Repudiare disputationi vim in, mollis iriure nec cu, alienum argumentum ius ad. Pri eu justo aeque torquatos.`
+        dialog: true
       }
     },
     props: {
@@ -79,14 +79,16 @@
     },
     methods: {
       handleCancel () {
-        this.dialog = false
-        this.$emit('close')
+        this.$router.push({
+          name: RouteNames.CurrentPhd.Home
+        })
       },
       handleSave () {
       }
     },
     components: {
-      StudentRecordTabs
+      StudentRecordTabs,
+      FacultySelector
     }
   }
 </script>
