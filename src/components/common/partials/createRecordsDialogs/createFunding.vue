@@ -3,7 +3,7 @@
     <v-dialog v-model="dialog" persistent max-width="500px">
       <v-card>
         <v-card-title>
-          <span class="headline">Create Funding</span>
+          <span class="headline">{{dialogTitle}}</span>
         </v-card-title>
         <v-card-text>
           <v-container grid-list-md>
@@ -11,19 +11,19 @@
               <v-flex xs12 sm6 md4>
                 <v-form>
                   <v-text-field label="Semester"
-                                v-model="newFunding.semester"></v-text-field>
+                                v-model="newFunding.semesterCode"/>
                   <v-text-field label="Type"
-                                v-model="newFunding.type"></v-text-field>
+                                v-model="newFunding.raOrTaOrGa"/>
                   <v-text-field label="Stipend"
-                                v-model="newFunding.stipend"></v-text-field>
+                                v-model="newFunding.stipend"/>
                   <v-text-field label="Tuition"
-                                v-model="newFunding.tuition"></v-text-field>
+                                v-model="newFunding.tuition"/>
                   <v-text-field label="#Credits"
-                                v-model="newFunding.credits"></v-text-field>
+                                v-model="newFunding.numberCredits"/>
                   <v-text-field label="Courses"
-                                v-model="newFunding.courses"></v-text-field>
+                                v-model="newFunding.courses"/>
                   <v-text-field label="Stipend Amount"
-                                v-model="newFunding.stipendAmount"></v-text-field>
+                                v-model="newFunding.stipendAmount"/>
                 </v-form>
               </v-flex>
             </v-layout>
@@ -33,7 +33,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" flat @click.native="$emit('close')">Close</v-btn>
-          <v-btn color="blue darken-1" flat @click.native="$emit('save', newFunding)">Save</v-btn>
+          <v-btn color="blue darken-1" flat @click.native="handleSave">{{ saveOrUpdate }}</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -52,6 +52,20 @@
     },
     data () {
       return {}
+    },
+    computed: {
+      dialogTitle () {
+        return this.isCreate ? 'Create Funding' : 'Edit Funding'
+      },
+      saveOrUpdate () {
+        return this.newFunding.idx ? 'Update' : 'Save'
+      }
+    },
+    methods: {
+      handleSave () {
+        this.$emit('save', this.newFunding)
+        this.newFunding = Object.assign({}, undefined)
+      }
     }
   }
 </script>

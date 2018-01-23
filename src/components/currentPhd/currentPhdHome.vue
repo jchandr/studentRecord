@@ -42,7 +42,7 @@ export default {
       })
     },
     getStudentRecords () {
-      Records.getPhDStudentRecords(this).then(({response}) => {
+      Records.getPhDStudentRecords(this).then(response => {
         this.items = response
         this.isLoading = false
       })

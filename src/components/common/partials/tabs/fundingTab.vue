@@ -2,15 +2,16 @@
   <div>
     <CreateFunding :dialog="createDialog"
                    @close="handleCloseFunding"
-                   @save="handleCreateFunding"></CreateFunding>
+                   @save="handleCreateFunding"
+                   :newFunding="newFunding"/>
     <v-container fluid v-bind="{ [`grid-list-sm`]: true }">
       <v-layout row wrap>
         <v-flex
           xs12
           lg3
           md6
-          v-for="item in items"
-          :key="item"
+          v-for="item, n in items"
+          :key="n"
         >
           <v-card tile color="green lighten-2">
             <v-list subheader>
@@ -73,10 +74,10 @@
             </v-list>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn icon>
+              <v-btn icon @click="handleDeleteFunding(item, n)">
                 <v-icon>delete</v-icon>
               </v-btn>
-              <v-btn icon>
+              <v-btn icon @click="handleEditFunding(item,n)">
                 <v-icon>edit</v-icon>
               </v-btn>
             </v-card-actions>
@@ -87,7 +88,8 @@
     <v-btn fab dark :right="true"
            class="right"
            :bottom="true"
-           @click="handleCreateFunding">
+           @click="createDialog = true"
+           :fixed="true">
       <v-icon dark>add</v-icon>
     </v-btn>
   </div>
@@ -105,7 +107,9 @@
     },
     data () {
       return {
-        createDialog: false
+        createDialog: false,
+        newFunding: undefined,
+        fundingArrayIndex: undefined
       }
     },
     methods: {
@@ -113,14 +117,34 @@
         this.createDialog = false
       },
       handleCreateFunding (newFunding) {
-        this.createDialog = true
-        Records.createStudentFundingInfo(this, ~~this.$route.params.id, newFunding).then(({response}) => {
-          this.items = response
+        newFunding.editBy = 2
+        if (newFunding.idx !== undefined) {
+          Records.editStudentFundingInfo(this, ~~this.$route.params.id, newFunding).then(() => {
+            this.items[this.fundingArrayIndex] = Object.assign({}, this.newFunding)
+            this.fundingArrayIndex = undefined
+          })
+        } else {
+          Records.createStudentFundingInfo(this, ~~this.$route.params.id, newFunding).then(() => {
+            this.items.push(newFunding)
+          })
+        }
+        this.createDialog = false
+      },
+      handleDeleteFunding (fundingToDelete, n) {
+        Records.deleteStudentFundingInfo(this, ~~this.$route.params.id, fundingToDelete).then(response => {
+          if (response === 1) {
+            this.items.splice(n, 1)
+          }
         })
+      },
+      handleEditFunding (fundingToEdit, n) {
+        this.newFunding = fundingToEdit
+        this.fundingArrayIndex = n
+        this.createDialog = true
       }
     },
     created () {
-      Records.getStudentFundingInfo(this, ~~this.$route.params.id).then(({response}) => {
+      Records.getStudentFundingInfo(this, ~~this.$route.params.id).then(response => {
         this.items = response
       })
     },

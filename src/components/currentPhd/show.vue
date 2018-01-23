@@ -21,10 +21,10 @@
     },
     methods: {
       getStudentInfo () {
-        Records.getStudentInfo(this, ~~this.id).then(({response}) => {
-          this.student = Object.assign({}, response[0])
+        Records.getStudentInfo(this, ~~this.id).then(response => {
+          this.student = Object.assign({}, response)
         })
-        Records.getStudentFundingInfo(this, ~~this.id).then(({response}) => {
+        Records.getStudentFundingInfo(this, ~~this.id).then(response => {
           this.student.funding = Object.assign({}, response)
         })
       },
