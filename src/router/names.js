@@ -17,5 +17,6 @@ export default {
   },
   GraduatedMs: {
     Home: 'GraduatedMsHome'
-  }
+  },
+  NotFoundComponent: 'NotFoundComponent'
 }

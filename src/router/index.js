@@ -6,11 +6,12 @@ import CurrentPhdCreate from '../components/currentPhd/create'
 import CurrentPhdShow from '../components/currentPhd/show'
 import MsPhdTrackHome from '../components/msPhdTrack/msPhdTrackHome'
 import CurrentFundedMsOnlyHome from
-  '../components/currentFundedMsOnly/currentFundedMsOnlyHome'
+    '../components/currentFundedMsOnly/currentFundedMsOnlyHome'
 import GraduatedPhdHome from '../components/graduatedPhd/graduatedPhdHome'
 import GraduatedMsHome from '../components/graduatedMs/graduatedMsHome'
 import LoginPage from '../components/login'
 import Home from '../components/home'
+import NotFoundComponent from '../components/notFoundComponenent'
 
 Vue.use(Router)
 
@@ -55,5 +56,10 @@ export default new Router({
       name: RouteNames.GraduatedMs.Home,
       component: GraduatedMsHome
     }]
+  },
+  {
+    path: '*',
+    name: RouteNames.NotFoundComponent,
+    component: NotFoundComponent
   }]
 })

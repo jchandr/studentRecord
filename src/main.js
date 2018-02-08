@@ -5,7 +5,6 @@ import Vue from 'vue'
 import VueResource from 'vue-resource'
 
 import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.css'
 
 import App from './App'
 import router from './router'
