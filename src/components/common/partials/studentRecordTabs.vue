@@ -35,7 +35,7 @@
           :id="'tab-funding'">
           <v-card flat>
             <v-card-text>
-              <FundingTab></FundingTab>
+              <FundingTab/>
             </v-card-text>
           </v-card>
         </v-tabs-content>
@@ -43,7 +43,9 @@
           :key="dissertationCommittee"
           :id="'tab-dissertationCommittee'">
           <v-card flat>
-            <v-card-text>dissertationCommittee Content</v-card-text>
+            <v-card-text>
+              dissertationCommittee content
+            </v-card-text>
           </v-card>
         </v-tabs-content>
         <v-tabs-content
@@ -57,7 +59,9 @@
           :key="progress"
           :id="'tab-progress'">
           <v-card flat>
-            <v-card-text>progress Content</v-card-text>
+            <v-card-text>
+              <ProgressInformationTab/>
+            </v-card-text>
           </v-card>
         </v-tabs-content>
         <v-tabs-content
@@ -73,6 +77,7 @@
 </template>
 <script>
   import FundingTab from '../../common/partials/tabs/fundingTab'
+  import ProgressInformationTab from '../../common/partials/tabs/progressInformationTab'
 
   export default {
     name: 'StudentRecordTabs',
@@ -80,7 +85,8 @@
       return {}
     },
     components: {
-      FundingTab
+      FundingTab,
+      ProgressInformationTab
     }
   }
 </script>
