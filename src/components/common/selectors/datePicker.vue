@@ -12,7 +12,7 @@
     @input="handleDateInput">
     <v-text-field
       slot="activator"
-      label="Picker in menu"
+      :label="pickerTitle"
       v-model="date"
       prepend-icon="event"
       readonly/>

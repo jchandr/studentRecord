@@ -31,8 +31,7 @@
             :type="e1 ? 'text' : 'password'"
             :rules="credentialsRules.password"
             counter
-            required
-            validate-on-blur/>
+            required/>
           <v-btn type="submit"
                  :disabled="!isError"
                  color="green">Login
